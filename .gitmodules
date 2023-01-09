@@ -1,0 +1,6 @@
+[submodule "lib/GPxMatrix"]
+	path = lib/GPxMatrix
+	url = https://github.com/3tawi/GPxMatrix.git
+[submodule "lib/WiFiManager"]
+	path = lib/WiFiManager
+	url = https://github.com/tzapu/WiFiManager.git
