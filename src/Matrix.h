@@ -5,7 +5,7 @@
 
 #define OE 15
 #define CLK 2
-#define LAT 0
+#define LAT 4
 #define A 12
 #define B 14
 #define C 27
@@ -13,7 +13,7 @@
 #define E 25
 
 // RGB pins for     (R1, G1, B1, R2, G2, B2)
-uint8_t rgbpins[] = {17, 19, 23, 16, 18, 22};
+uint8_t rgbpins[] = {18, 21, 23, 5, 19, 22};
 
 GPxMatrix matrix(A, B, C, D, E, CLK, LAT, OE, false, 128, rgbpins);
 
@@ -37,7 +37,7 @@ void matrixStart()
   matrix.setTextWrap(false); // Allow text to run off right edge
   matrix.setTextSize(1);
 
-  matrix.setTextColor(matrix.Color888(colourRed, colourGreen, colourBlue));
+  matrix.setTextColor(matrix.Color888(colourBlue, colourGreen, colourRed));
 }
 
 void matrixBoot()
@@ -52,13 +52,17 @@ void matrixBoot()
   }
 }
 
-void printText(char string[])
+void matrixTextColour(char chars[], int blue, int green, int red)
 {
+  matrix.setTextColor(matrix.Color888(blue, green, red));
+  matrix.println(chars);
+  Serial.println(chars);
+}
 
-  matrixReset();
-
-  matrix.println(string);
-  Serial.println(string);
+void matrixText(char chars[])
+{
+  matrix.println(chars);
+  Serial.println(chars);
 }
 
 // Gets the local time from pool.ntp.org and prints it on LED matrix
