@@ -47,9 +47,16 @@ void matrixBoot()
 
   for (int i = 0; i < 5; i++)
   {
-    delay(500);
+    delay(200);
     matrix.print(".");
   }
+}
+
+void matrixColour(int blue, int green, int red)
+{
+  colourRed = red,
+  colourGreen = green,
+  colourBlue = blue;
 }
 
 void matrixTextColour(char chars[], int blue, int green, int red)
